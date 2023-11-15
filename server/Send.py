@@ -1,5 +1,6 @@
 import smtplib
 from email.message import EmailMessage
+from email.mime.text import MIMEText
 
 # STMP 서버 url, port
 SMTP_SERVER = 'smtp.gmail.com'  # smtp.naver.com / smtp.kakao.com
