@@ -74,3 +74,18 @@ body{
     color: dimgrey;
     font-weight: 600;
 }
+.wrapper .check-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    text-align : right
+}
+.wrapper .check-box input {
+    margin-right: 8px;
+}
+.wrapper a:hover {
+    text-decoration: underline;
+}
+
+
+
