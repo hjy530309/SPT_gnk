@@ -1,4 +1,18 @@
 from flask import Flask, render_template, request, url_for, redirect, session
+import pymysql
+
+db= pymysql.connect(host='')
+
+cursor = db.cursor()
+sql = "select * from users"
+cursor.execute(sql)
+
+cursor.fetchall()
+cursor.fetchone()
+cursor.fetchmany(n)
+
+db.commit()
+db.close()
 
 app = Flask(__name__)
 
