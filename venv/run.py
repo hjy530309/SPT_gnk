@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect, session
 import pymysql
-
-db= pymysql.connect(host='')
+'''
+db= pymysql.connect(host='localhost', user='root', password='0000', db='project', charset='utf8')
 
 cursor = db.cursor()
 sql = "select * from users"
@@ -13,7 +13,7 @@ cursor.fetchmany(n)
 
 db.commit()
 db.close()
-
+'''
 app = Flask(__name__)
 
 
