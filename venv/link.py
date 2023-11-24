@@ -1,7 +1,8 @@
 import pymysql
 
+
 # MySQL 데이터베이스 연결
-db = pymysql.connect(host='localhost', user='root', password='0000', db='project', charset='utf8')
+db = pymysql.connect(host='192.168.35.124', user='sean', password='qkqh1936@@@', db='project', charset='utf8')
 
 # 데이터에 접근
 cursor = db.cursor()
@@ -14,8 +15,7 @@ cursor.execute(sql)
 
 # db 데이터 가져오기
 cursor.fetchall() #모든 행 가져오기
-cursor.fetchone() # 하나의 행만 가져오기
-cursor.fetchmany(n) # n개의 데이터 가져오기 
+cursor.fetchone() # 하나의 행만 가져오기 
 
 # 수정 사항 db에 저장
 db.commit()
