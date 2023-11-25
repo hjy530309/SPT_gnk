@@ -1,8 +1,9 @@
+'''
 import pymysql
 
 
 # MySQL 데이터베이스 연결
-db = pymysql.connect(host='192.168.35.124', port=3306, user='sean', password='qkqh1936@@@', db='project', charset='utf8')
+db = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='1234', db='project', charset='utf8')
 
 # 데이터에 접근
 cursor = db.cursor()
@@ -25,3 +26,4 @@ db.commit()
  
 # Database 닫기
 db.close()
+'''
