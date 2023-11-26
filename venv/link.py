@@ -1,29 +1,27 @@
-'''
 import pymysql
 
+def link():
+    link = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='project', charset='utf8')
+    return link
+def insert_user(user_id, user_name, password):
+    a = link()
+    cursor=a.cursor()
 
-# MySQL 데이터베이스 연결
-db = pymysql.connect(host='127.0.0.1', port=3306, user='root', password='1234', db='project', charset='utf8')
+    sql = "INSERT INTO users (user_id, user_name, password) VALUES (%s, %s, %s)"
+    values = (user_id, user_name, password)
+    cursor.execute(sql, values)
 
-# 데이터에 접근
-cursor = db.cursor()
+def get_all_users():
 
-# SQL query 작성
-sql = "SELECT * FROM users;"
+    a = link()
+    cursor = a.cursor()
 
-# SQL query 실행
-cursor.execute(sql) 
+    sql= "SELECT * FROM users"
+    cursor.execute(sql)
 
-# db 데이터 가져오기
+    users = cursor.fetchall()
 
-r = cursor.fetchall() #모든 행 가져오기
-cursor.fetchone() # 하나의 행만 가져오기
+    
+    a.close()
 
-print(r)
-
-# 수정 사항 db에 저장
-db.commit()
- 
-# Database 닫기
-db.close()
-'''
+    return users
