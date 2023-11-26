@@ -1,0 +1,202 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#left-panel {
+  background-color: #388a8b;
+  color: rgb(255, 255, 255);
+  width: 200px;
+  height: calc(100vh - 74px); /* 60px is the height of the header */
+  position: fixed;
+  top: 74px; /* Adjusted top position to start below the header */
+  left: 0;
+  overflow-y: auto;
+}
+
+#left-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+#left-panel .mail-setting {
+  padding: 5%;
+  width: 100%;
+}
+#left-panel li {
+  display:flow-root;
+  padding: 7%;
+}
+
+#left-panel i {
+  margin-right: 15%;
+}
+
+#left-panel a {
+  color: #fff;
+}
+
+#left-panel li button {
+  background-color: #60dbd5;
+  color: white;
+  padding: 5%;
+  border: none;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  cursor: pointer;
+  width: 120%;
+}
+#left-panel li #button {
+  background-color: #60dbd5;
+  color: white;
+  padding: 5%;
+  border: none;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  cursor: pointer;
+  width: 120%;
+  font-weight: bold;
+}
+#left-panel li button:hover {
+  background-color: #127886;
+}
+
+#header {
+  background-color: #388a8b;
+  color: #fff;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display:flex;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+#header a{
+  vertical-align: middle;
+  color:#fff
+}
+#header i{
+  vertical-align: middle;
+}
+#header img {
+  display:flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.right-panel {
+  margin-left: 200px;
+}
+
+.mail-app {
+  position: fixed;
+  height: calc(100vh - 74px);
+  top: 74px;
+  left: 200px;
+  width: 88%;
+  overflow-y: auto;
+}
+
+.mail-compose {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.mail-compose li {
+  display: flex;
+  margin-bottom: 10px;
+  vertical-align: middle;
+  justify-content:space-between;
+  align-items: center;
+}
+
+.mail-compose label {
+  margin-bottom: 8px;
+  color: #388a8b;
+  margin-left: 2%;
+  
+}
+.mail-message label {
+  margin-bottom: 5px;
+  color: #388a8b;
+  margin-right: 100%;
+
+
+}
+.mail-compose select{
+  background-color: #388a8b;
+  width: 60%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  color: #fff;
+  vertical-align: middle;
+  margin-right: 5%;
+}
+.mail-compose input {
+  background-color: #388a8b;
+  width: 60%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  color: #fff;
+  vertical-align: middle;
+  margin-right: 30%;
+}
+.mail-message li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  vertical-align: middle;
+  justify-content:space-between;
+  align-items: center;
+  height: 100%;
+}
+.mail-message textarea{
+  background-color: #388a8b;
+  width: 80%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 8%;
+  height: 300px;
+}
+.mail-compose input::placeholder,
+.mail-message textarea::placeholder,
+.mail-compose select::placeholder {
+  color:#fff
+}
+.mail-compose button {
+  background-color: #4cafac;
+  color: white;
+  padding: 1%;
+  border: none;
+  cursor: pointer;
+  margin-right: 15%;
+  margin-bottom: 5px;
+}
+.mail-compose input[id="newContact"] {
+  background-color: #388a8b;
+  width: 30%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 1%;
+
+}
+.mail-compose button:hover {
+  background-color: #1d809c;
+}
+#newContactInputWrapper {
+  display: none;
+}
