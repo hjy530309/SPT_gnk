@@ -17,7 +17,7 @@ CREATE TABLE user_email (
     service_kakao VARCHAR(50) ,
     linked_email_address VARCHAR(255), #연동된 이메일 주소
     access_token VARCHAR(255), #엑세스 토큰
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    /*FOREIGN KEY (user_id) REFERENCES users(user_id)*/
 );
 
  #받은 메일함 테이블
@@ -28,7 +28,7 @@ CREATE TABLE user_email (
     subject_1 VARCHAR(255), #메일 제목
     body_1 TEXT, #메일 내용
     received_timestamp DATETIME, #받은 시간
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    /*FOREIGN KEY (user_id) REFERENCES users(user_id)*/
 );
 
 #보낸 메일함
@@ -39,7 +39,7 @@ CREATE TABLE sent (
     subject_2 VARCHAR(255),
     body_2 TEXT,
     sent_timestamp DATETIME, #보낸 시간
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    /*FOREIGN KEY (user_id) REFERENCES users(user_id)*/
 );
 
 #내게쓴 메일함
@@ -49,9 +49,9 @@ CREATE TABLE my_sent_mailbox (
     subject_3 VARCHAR(255),
     body_3 TEXT,
     me_timestamp DATETIME, #내게 쓴 시간
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+   /* FOREIGN KEY (user_id) REFERENCES users(user_id)*/
 );
-
+/*
 INSERT INTO users (user_id, user_name, pass) VALUES
 (1, 'John Doe','hashed_password_1'),
 (2, 'Jane Smith', 'hashed_password_2'),
@@ -80,3 +80,4 @@ VALUES
 (2, 2, 'Project Update', 'Bob, here is the project update.', '2023-11-18 14:45:00'),
 (3, 3, 'Quick Question', 'David, I have a quick question for you.', '2023-11-19 18:00:00');
 
+*/
