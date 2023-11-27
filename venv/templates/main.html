@@ -4,26 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GNK</title>
-<<<<<<< HEAD:venv/templates/index.html
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
-=======
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
->>>>>>> a55de756419e17c8353ff1fed669027385aa6a3a:venv/templates/main.html
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
     <div class="wrapper">
-<<<<<<< HEAD:venv/templates/index.html
-<<<<<<< Updated upstream
-        <form action="" method="post"></form>
-=======
-        <form action="{{ url_for('login') }}" method="post"></form>
->>>>>>> Stashed changes
-=======
-        
+
         <form action="/index" method= "post">
->>>>>>> a55de756419e17c8353ff1fed669027385aa6a3a:venv/templates/main.html
             <h1>Login</h1>
                 <div class="input-box">
                 <input id="id" name="name" type="text" placeholder="Username" required>
@@ -37,7 +25,7 @@
                 <input type="checkbox" id="remember" name="remember">
                 <label for ="remember">Save login</label>
                 <p style="text-align: right">Forgot account?&nbsp;&nbsp;<a href="#">Sign up</a></p>
-            </div>            
+            </div>
             <button type="submit" class="btn">Login</button> 
         </form>
 </body>

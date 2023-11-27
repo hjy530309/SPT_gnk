@@ -1,38 +1,55 @@
-<<<<<<< HEAD
-=======
+import mysql.connector
 
+db_config = {
+    'host': '127.0.0.1',      # MySQL 호스트 주소
+    'user': 'root',           # MySQL 사용자명
+    'password': '1234',       # MySQL 비밀번호
+    'database': 'project'     # 사용할 데이터베이스 이름
+}
 
->>>>>>> a55de756419e17c8353ff1fed669027385aa6a3a
-'''
-import pymysql
+# MySQL 연결
+conn = mysql.connector.connect(**db_config)
 
-def link():
-    link = pymysql.connect(host='127.0.0.1', user='root', password='1234', db='project', charset='utf8')
-    return link
-def insert_user(user_id, user_name, password):
-    a = link()
-    cursor=a.cursor()
+def user_email():
+    if not conn.is_connected():
+        conn.reconnect()
 
-    sql = "INSERT INTO users (user_id, user_name, password) VALUES (%s, %s, %s)"
-    values = (user_id, user_name, password)
-    cursor.execute(sql, values)
+    # 커서 생성
+    cursor = conn.cursor()
 
-def get_all_users():
+    user_sql = 'SELECT user_name FROM users'
+    cursor.execute(user_sql)
+    result = cursor.fetchall()
 
-    a = link()
-    cursor = a.cursor()
+    # 커서 닫기
+    cursor.close()
 
-    sql= "SELECT * FROM users"
-    cursor.execute(sql)
+    return result
 
-    users = cursor.fetchall()
+def pass_email():
+    if not conn.is_connected():
+        conn.reconnect()
 
-    
-    a.close()
+    # 커서 생성
+    cursor = conn.cursor()
 
-    return users
-<<<<<<< HEAD
-'''
-=======
-    '''
->>>>>>> a55de756419e17c8353ff1fed669027385aa6a3a
+    pass_sql = 'SELECT pass FROM users'
+    cursor.execute(pass_sql)
+    result = cursor.fetchall()
+
+    # 커서 닫기
+    cursor.close()
+
+    return result
+
+# 사용자 이름과 비밀번호 가져오기
+user_names = user_email()
+passwords = pass_email()
+
+# 결과 출력 또는 활용
+print("User Names:", user_names)
+print("Passwords:", passwords)
+
+# 연결 닫기
+conn.close()
+
