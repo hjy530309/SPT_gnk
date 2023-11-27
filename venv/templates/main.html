@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GNK</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='/venv/static/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </head>
 <body>
     <div class="wrapper">
-        <form action="{{ url_for('register') }}" method="post"></form>
+        
+        <form action="/index" method= "post">
             <h1>Login</h1>
-            <div class="input-box">
-                <input type="text" placeholder="Username" required>
+                <div class="input-box">
+                <input id="id" name="name" type="text" placeholder="Username" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="password" required>
+                <input id="pw" name="pwd" type="password" placeholder="password" required>
                 <i class='bx bxs-lock-alt' ></i>
             </div>
             <div class="check-box">
@@ -25,5 +27,6 @@
                 <p style="text-align: right">Forgot account?&nbsp;&nbsp;<a href="#">Sign up</a></p>
             </div>            
             <button type="submit" class="btn">Login</button> 
+        </form>
 </body>
 </html>
