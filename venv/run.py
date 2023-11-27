@@ -100,6 +100,10 @@ def index():
 
     return render_template('main.html', username=username)
 
+@app.route('/receive', methods=['POST'])
+def receive():
+    
+
 
 if __name__ == '__main__':
     app.run(debug=True)
