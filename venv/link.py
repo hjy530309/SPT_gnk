@@ -1,5 +1,8 @@
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> a55de756419e17c8353ff1fed669027385aa6a3a
 '''
 import pymysql
 
@@ -28,4 +31,8 @@ def get_all_users():
     a.close()
 
     return users
+<<<<<<< HEAD
+'''
+=======
     '''
+>>>>>>> a55de756419e17c8353ff1fed669027385aa6a3a
