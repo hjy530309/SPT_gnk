@@ -1,3 +1,4 @@
+'''
 import pymysql
 
 def link():
@@ -25,3 +26,4 @@ def get_all_users():
     a.close()
 
     return users
+'''

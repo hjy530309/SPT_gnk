@@ -1,7 +1,36 @@
+<<<<<<< Updated upstream
 from flask import Flask, render_template
+=======
+import pymysql
+from flask import Flask, render_template, request
+>>>>>>> Stashed changes
 
+
+users_db = pymysql.connect(
+    user='root', 
+    passwd='1234', 
+    host='127.0.0.1', 
+    db='project', 
+    charset='utf8'
+)
+
+#cursor = sensor_db.cursor(pymysql.cursors.DictCursor)
+cursor = users_db.cursor()
+
+#sql = "DELETE FROM sensor WHERE _id = 2;"
+sql = "SELECT * FROM users"
+
+
+cursor.execute(sql)
+
+
+data_list = cursor.fetchall()
+
+
+#Flask 객체 인스턴스 생성
 app = Flask(__name__)
 
+<<<<<<< Updated upstream
 @app.route('/')
 def home():
     return render_template('sign1.html')
@@ -86,3 +115,19 @@ if __name__ == '__main__':
     app.run()
 
 '''    
+=======
+@app.route('/') # 접속하는 url
+def signup():
+    
+    sql = "SELECT * from users"
+    cursor.execute(sql)
+    data_list = cursor.fetchall()
+    
+    
+    return render_template('signup.html',data_list=data_list)
+    
+if __name__=="__main__":
+    #app.run(debug=True)
+    # host 등을 직접 지정하고 싶다면
+    app.run(host="0.0.0.0", port="80", debug=True)
+>>>>>>> Stashed changes
