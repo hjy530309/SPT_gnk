@@ -17,12 +17,13 @@ app.config['MYSQL_DB'] = 'project'  # MySQL 데이터베이스명
 mysql = MySQL(app)
 
 @app.route('/')
-def main():
+def home():
     return render_template('main.html')
 
-@app.route('/index', methods=['POST'])
-def index():
+@app.route('/main', methods=['POST'])
+def main():
     if request.method == 'POST':
+         
         global username, password
         username = request.form['name']
         password = request.form['pwd']
@@ -34,6 +35,22 @@ def index():
         return render_template('write.html',username = username, password = password)
 
     return render_template('main.html', username=username)
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    if request.method == 'POST':
+        sign_user = request.form['name']
+        sign_pwd = request.form['pwd']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO users (user_id, user_name, pass) VALUES (%s, %s, %s)", (9887, username, password))
+        mysql.connection.commit()
+        cur.close()
+
+        return render_template('sign2.html')
+    
+app.add_url_rule('/signup', 'signup', signup) 
+     
+     
 
 @app.route('/write', methods=['POST'])
 def write():
@@ -133,5 +150,7 @@ def receive():
     pop.close()
     
 if __name__ == "__main__":
+    with app.test_request_context():
+          signup_url = url_for('signup')
 		
-		app.run()
+    app.run(debug=True)
