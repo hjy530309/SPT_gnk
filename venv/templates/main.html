@@ -10,24 +10,28 @@
 </head>
 <body>
     <div class="wrapper">
-
-        <form action="/index" method= "post">
+        <form action="/index" method="post">
             <h1>Login</h1>
-                <div class="input-box">
+            <div class="input-box">
                 <input id="id" name="name" type="text" placeholder="Username" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
                 <input id="pw" name="pwd" type="password" placeholder="password" required>
-                <i class='bx bxs-lock-alt' ></i>
+                <i class='bx bxs-lock-alt'></i>
             </div>
+            <!--
             <div class="check-box">
                 <input type="checkbox" id="remember" name="remember">
-                <label for ="remember">Save login</label>
+                <label for="remember">Save login</label>
                 <p style="text-align: right">Forgot account?&nbsp;&nbsp;<button onclick="signup()">Sign up</button></p>
-                <script src="/static/js/script.js"></script>
             </div>
-            <a href="sign1.html"><button type="submit" class="btn">Login</button></a> 
+        -->
+            <button type="submit" class="btn">Login</button>
+
         </form>
+        <form action="/signup" method="post">
+        <button type="submit">Sign up</button></form>
+    </div>
 </body>
 </html>

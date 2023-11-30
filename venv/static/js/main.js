@@ -22,7 +22,7 @@ function submitForm() {
     xhr.send(JSON.stringify(data));
 }
 
-function signup(){
-    window.location.href = 'sign1.html';
-
+function signup() {
+    window.location.href = '/sign1';
 }
+
