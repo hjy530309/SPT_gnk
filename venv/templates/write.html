@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>메일함</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/write.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/write.css')}}"> <!-- 외부 CSS 파일 연결 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
 
@@ -18,14 +18,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    
+    <link rel="stylesheet" href="write.css">
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
-    <script src="write.js"></script> <!-- 외부 JavaScript 파일 연결 -->
+    <script src="{{url_for('static', filename='js/write.js')}}"></script> <!-- 외부 JavaScript 파일 연결 -->
    <style>
     #weatherWidget .currentDesc {
         color: #ffffff!important;
@@ -74,23 +74,15 @@
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
-            <div>
-                <h1>test</h1>
-                {{username}}<br>
-                {{pwd}}<br>
-            </div>
             <div class="top-right">
                 <div class="header-menu">
                     <div class="header-left">
                         <div class="form-inline">
                             <form class="search-form">
                                 <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                             <div class="header-menu">
-                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>
-                                    <button type="submit" class="btn">로그아웃</button>
-                                </a>
+                                <a href="{{url_for('login')}}"><button type="submit" class="btn">로그아웃</button></a>
                             </div>
                         </div>
                         
@@ -109,24 +101,24 @@
                 <ul class="nav navbar-nav">
                     <div class="button-setting">
                         <li class="active">
-                            <button type="submit" id="button">메일 쓰기</button>
-                            <button type="submit" >내게 쓰기</button>
+                            <a href="{{url_for('write')}}"><button type="submit" id="button">메일 쓰기</button></a>
+                            <a href="{{url_for('writeme')}}"><button type="submit" >내게 쓰기</button></a>
                         </li>
                     </div>
                     <div class="mail-setting">
                         <li class="menu-title">메일함</li><!-- /.menu-title -->
                         <li class="menu-item-has-children dropdown">
-                            <a href="#" class="toggle" > <i class="menu-icon fa fa-envelope"></i>받은메일함</a>
+                            <a href="{{url_for('receive')}}" class="toggle" > <i class="menu-icon fa fa-envelope"></i>받은메일함</a>
                         </li>
                         <li class="menu-item-has-children dropdown">
-                            <a href="#" class="toggle" > <i class="menu-icon fa fa-paper-plane"></i>보낸메일함</a>
+                            <a href="{{url_for('send')}}" class="toggle" > <i class="menu-icon fa fa-paper-plane"></i>보낸메일함</a>
                         </li>
                         <li class="menu-item-has-children dropdown">
-                            <a href="#" class="toggle" > <i class="menu-icon fa fa-file-text"></i>내게쓴메일함</a>
+                            <a href="{{url_for('writemegather')}}" class="toggle" > <i class="menu-icon fa fa-file-text"></i>내게쓴메일함</a>
                         </li>
                         <li class="menu-title">휴지통</li><!-- /.menu-title -->
                         <li class="menu-item-has-children dropdown">
-                            <a href="#" class="toggle" > <i class="menu-icon fa fa-trash-o"></i>휴지통</a>
+                            <a href="trash.html" class="toggle" > <i class="menu-icon fa fa-trash-o"></i>휴지통</a>
                         </li>
                     </div>
                 </ul>
@@ -137,22 +129,29 @@
     <!-- Right Panel -->
         <div class="mail-app">
             <div class="mail-compose">
-                <form action="/write" method="post">
-                <button type="submit" onclick="sendEmail()">전송</button>
+                <button type="button" onclick="sendEmail()">전송</button>
                 <li>
-                    <label for="recipient">받는 사람</label>
+                    <div class="label">
+                        <label for="recipient">받는 사람</label>
+                    </div>
                     <input type="text" id="recipient" name="recipient" placeholder="이메일 주소를 입력하세요" required>
                 </li>
                 <li>
-                    <label for="subject">제목</label>
+                    <div class="label">
+                        <label for="subject">제목</label>
+                    </div>
                     <input type="text" id="subject" name="subject" placeholder="제목을 입력하세요" required>
                 </li>
                 <li>
-                    <label for="attachment">첨부 파일</label>
+                    <div class="label">
+                        <label for="attachment">첨부 파일</label>
+                    </div>
                     <input type="file" id="attachment" name="attachment">
                 </li>
                 <li>
-                    <label for="contacts">주소록</label>
+                    <div class="label">
+                        <label for="contacts">주소록</label>
+                    </div>
                     <select id="contacts" name="contacts">
                         <option value="contact1">이성주 (contact1@example.com)</option>
                         <option value="contact2">홍길동 (contact2@example.com)</option>
@@ -160,11 +159,13 @@
                     </select>
                     <button type="button" onclick="toggleNewContactInput()">추가</button>
                 </li>
-                <div id="newContactInputWrapper">
-                    <label for="contacts">새 주소 추가</label>
-                    <input type="text" id="newContact" placeholder="새 주소 추가">
-                    <button type="button" onclick="addNewContact()">추가</button>
-                </div>
+                <li>
+                    <div id="newContactInputWrapper">
+                        <label for="contacts">주소 추가</label>
+                        <input type="text" id="newContact" placeholder="새 주소 추가">
+                        <button type="button" onclick="addNewContact()">추가</button>
+                    </div>
+                </li>
             </div>
             <div class="mail-message">
                 <li>
@@ -172,8 +173,7 @@
                 </li> 
             </div>
         </div>
-    
-    </form>
+    >
 </body>
 </html>
         

@@ -75,12 +75,12 @@ body::before {
     font-weight: 600;
     z-index: 6;
 }
-.signup2 .button:hover {
-    background-color: rgb(0, 0, 0);
-    z-index: 7;
+.signup2 button:hover {
+    background-color:aqua;
 }
 .signup2 form {
     display: flex;
     flex-direction: column;
     border: #000000;
 }
+

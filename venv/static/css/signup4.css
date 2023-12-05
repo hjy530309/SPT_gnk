@@ -20,10 +20,11 @@ body::before {
 .signup4 {
     background-color: rgb(216, 207, 25);
     width: 300px;
-    margin: 100px auto;
+    margin: 10% auto;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
 }
 .signup4 h2{
     text-align: center;
@@ -71,8 +72,8 @@ body::before {
     color: rgb(0, 0, 0);
     font-weight: 600;
 }
-.signup4 .button:hover {
-    background-color: rgb(0, 0, 0);
+.signup4 button:hover {
+    background-color:rgb(241, 255, 47);
 }
 .signup4 form {
     display: flex;
