@@ -118,7 +118,7 @@
                         </li>
                         <li class="menu-title">휴지통</li><!-- /.menu-title -->
                         <li class="menu-item-has-children dropdown">
-                            <a href="trash.html" class="toggle" > <i class="menu-icon fa fa-trash-o"></i>휴지통</a>
+                            <a href="{{url_for('trash')}}" class="toggle" > <i class="menu-icon fa fa-trash-o"></i>휴지통</a>
                         </li>
                     </div>
                 </ul>
@@ -127,9 +127,11 @@
     </aside>
     <!-- /#left-panel -->
     <!-- Right Panel -->
+    <form action="/send" method="POST">
         <div class="mail-app">
             <div class="mail-compose">
-                <button type="button" onclick="sendEmail()">전송</button>
+                <!--  <button type="submit"  onclick="sendEmail()">전송</button>-->
+                <button type="submit">전송</button>
                 <li>
                     <div class="label">
                         <label for="recipient">받는 사람</label>
@@ -173,7 +175,7 @@
                 </li> 
             </div>
         </div>
-    >
+    </form>
 </body>
 </html>
         
