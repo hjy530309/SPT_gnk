@@ -12,13 +12,15 @@ from email import policy
 
 app = Flask(__name__)
   
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '1234'
+app.config['MYSQL_DB'] = 'team02_06'
+app.config['MYSQL_PORT'] = 3306
+mysql = MySQL(app)
+
 app.secret_key = "qwer"
-conn = pymysql.connect(host='localhost',
-                       user='root',
-                       password='1234',
-                       db='team02_06',
-                       charset='utf8mb4',
-                       cursorclass=pymysql.cursors.DictCursor)
+
 
 
 @app.route('/')
@@ -34,9 +36,18 @@ def login():
         user_id = request.form['name']
         user_pw = request.form['pwd']
 
-        
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM users WHERE user_id = %s AND user_pw = %s", (user_id, user_pw))
+        user = cur.fetchone()
+        cur.close()
 
-        return render_template('send.html')
+        if user:
+            session['logged_in'] = True
+            session['username'] = user_id
+            return redirect(url_for('send'))
+        else:
+            return redirect(url_for('login'))
+
     return render_template('login.html', error = error)
 ''' 
         for row in data:
@@ -60,36 +71,14 @@ def signGNK():
         sign_pwd = request.form['user_pw']
         sign_confirm = request.form['user_cp']
 
-        return render_template('signG.html')
-
-
-    return render_template('signGNK.html', error=error)
-
-'''
-    if request.method == 'GET':
-        return render_template("signGNK.html")
-    else:
-        sign_user = request.form['user_id']
-        sign_pwd = request.form['user_pw']
-        sign_confirm = request.form['user_cp']
-        
-        if sign_user =='' or sign_pwd =='' or sign_confirm =='':
-            flash("입력되지 않은 값이 있습니다.")
-            return render_template("signGNK.html") 
-        elif sign_pwd != sign_confirm:
-            flash("비밀번호가 일치하지 않습니다.")
-            return render_template("signGNK.html")
-        else:
-        
-        # 기존 db에 들어있는 id와 비교하고 값 넣어야함
-        cur = mysql.connection.cursor()     
+        cur = mysql.connection.cursor()
         cur.execute("INSERT INTO users (user_id, user_pw) VALUES (%s, %s)", (sign_user, sign_pwd))
         mysql.connection.commit()
         cur.close()
-        flash("회원가입이 완료되었습니다.", 'success')
-            
-        return render_template('signG.html', user_id=sign_user, user_pw=sign_pwd)
-'''
+
+        return render_template('signG.html')
+    return render_template('signGNK.html', error=error)
+
 
 @app.route('/signG', methods=['GET','POST'])
 def signG():
@@ -97,6 +86,11 @@ def signG():
         google_id = request.form['google_id']
         google_pw = request.form['google_pw']
         
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO userG (google_id, google_pw) VALUES (%s, %s)", (google_id, google_pw))
+        mysql.connection.commit()
+        cur.close()
+
         return render_template('signN.html')
     return render_template("signG.html")
 
@@ -105,7 +99,12 @@ def signN():
     if request.method == 'POST':
         naver_id = request.form.get('naver_id')
         naver_pw = request.form['naver_id']
-        
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO userN (naver_id, naver_pw) VALUES (%s, %s)", (naver_id, naver_pw))
+        mysql.connection.commit()
+        cur.close()
+
         return render_template('signK.html')
     return render_template('signN.html')
 
@@ -115,6 +114,11 @@ def signK():
     if request.method == 'POST':
         kakao_id = request.form['kakao_id']
         kakao_pw = request.form['kakao_pw']
+
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO userK (kakao_id, kakao_pw) VALUES (%s, %s)", (kakao_id, kakao_pw))
+        mysql.connection.commit()
+        cur.close()
 
         return render_template('login.html')
     return render_template('signK.html')
